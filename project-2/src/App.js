@@ -1,4 +1,59 @@
-import P from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
+
+const useMyHook = (callback, delay = 1000) => {
+  const savedCb = useRef();
+
+  useEffect(() => {
+    savedCb.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      savedCb.current();
+    }, delay);
+
+    return () => clearInterval(interval);
+  }, [delay]);
+};
+
+function App() {
+  const [counter, setCounter] = useState(0);
+  const [delay, setDelay] = useState(1000);
+  const [incrementor, setIncrementor] = useState(100);
+
+  useMyHook(() => setCounter((c) => c + 1), delay);
+
+  return (
+    <div>
+      <h1>Counter {counter}</h1>
+      <h3>Delay: {delay}ms</h3>
+      <input
+        type="number"
+        value={incrementor}
+        onChange={(e) => setIncrementor(Number(e.target.value))}
+      />
+      <div>
+        <button
+          onClick={() => {
+            setDelay((d) => d + incrementor);
+          }}
+        >
+          +{incrementor}
+        </button>
+        <button
+          onClick={() => {
+            setDelay((d) => d - incrementor);
+          }}
+        >
+          -{incrementor}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// EXEMPLO USECONTEXT COM REDUCER
+/* import P from 'prop-types';
 import { createContext, useContext, useReducer, useRef } from 'react';
 import './App.css';
 
@@ -69,7 +124,7 @@ function App() {
     </AppContext>
   );
 }
-
+ */
 // EXEMPLO USE REDUCER
 /* import { useReducer } from 'react';
 
