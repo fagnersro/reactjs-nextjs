@@ -1,4 +1,77 @@
-import { useReducer } from 'react';
+import P from 'prop-types';
+import { createContext, useContext, useReducer, useRef } from 'react';
+import './App.css';
+
+export const actions = {
+  CHANGE_TITLE: 'CHANGE_TITLE',
+};
+
+// data.js
+const globalState = {
+  title: 'O título do contexto',
+  body: 'O body do contexto',
+  counter: 0,
+};
+
+// reducer.js
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case actions.CHANGE_TITLE: {
+      console.log('Mudar título');
+      return { ...state, title: action.payload };
+    }
+  }
+  return { ...state };
+};
+
+//AppContext.jsx
+export const Context = createContext();
+export const AppContext = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, globalState);
+
+  const changeTile = (payload) => {
+    dispatch({ type: actions.CHANGE_TITLE, payload });
+  };
+
+  return (
+    <Context.Provider value={{ state, changeTile }}>
+      {children}
+    </Context.Provider>
+  );
+};
+
+AppContext.propTypes = {
+  children: P.node,
+};
+
+//H1/ indedex.jsx
+export const H1 = () => {
+  const context = useContext(Context);
+  const inputRef = useRef();
+
+  return (
+    <>
+      <h1 onClick={() => context.changeTile(inputRef.current.value)}>
+        {context.state.title}
+      </h1>
+      <input type="text" ref={inputRef} />
+    </>
+  );
+};
+
+// App.jsx
+function App() {
+  return (
+    <AppContext>
+      <div>
+        <H1 />
+      </div>
+    </AppContext>
+  );
+}
+
+// EXEMPLO USE REDUCER
+/* import { useReducer } from 'react';
 
 import './App.css';
 
@@ -47,7 +120,7 @@ function App() {
       <button onClick={() => dispatch({ type: 'inverter' })}>inverter</button>
     </div>
   );
-}
+} */
 
 // EXEMPLO USECONTEXT
 // import './App.css';
