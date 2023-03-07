@@ -1,4 +1,15 @@
-import { useEffect, useRef, useState } from 'react';
+import './styles.css';
+
+function App() {
+  return (
+    <div>
+      <h1>Oi</h1>
+    </div>
+  );
+}
+
+// EXEMPLO CRIANDO PRÓPIO HOOK
+/* import { useEffect, useRef, useState } from 'react';
 
 const useMyHook = (callback, delay = 1000) => {
   const savedCb = useRef();
@@ -50,7 +61,7 @@ function App() {
       </div>
     </div>
   );
-}
+} */
 
 // EXEMPLO USECONTEXT COM REDUCER
 /* import P from 'prop-types';
