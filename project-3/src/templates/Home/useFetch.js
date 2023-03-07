@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import './style.css';
 
 const isObjectEqual = (objA, objB) => {
   return JSON.stringify(objA) === JSON.stringify(objB);
