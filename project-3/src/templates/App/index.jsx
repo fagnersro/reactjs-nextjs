@@ -1,14 +1,17 @@
 import './style.css';
 import { PostsProvider } from '../../components/context/PostsProvider';
 import { Posts } from '../../components/Posts';
+import { CounterProvider } from '../../components/context/CounterProvider';
 
 function App() {
   return (
-    <PostsProvider>
-      <div>
-        <Posts />
-      </div>
-    </PostsProvider>
+    <CounterProvider>
+      <PostsProvider>
+        <div>
+          <Posts />
+        </div>
+      </PostsProvider>
+    </CounterProvider>
   );
 }
 
