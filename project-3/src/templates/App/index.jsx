@@ -1,7 +1,7 @@
-import { Homee } from '../useAsync-hook';
+import { LayoutEffect } from '../useLayoutEffect';
 
 function App() {
-  return <Homee />;
+  return <LayoutEffect />;
 }
 
 export default App;
