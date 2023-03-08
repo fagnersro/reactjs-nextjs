@@ -1,7 +1,7 @@
-import { Home } from '../Home';
+import { Homee } from '../useAsync-hook';
 
 function App() {
-  return <Home />;
+  return <Homee />;
 }
 
 export default App;
