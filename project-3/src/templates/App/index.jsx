@@ -1,7 +1,7 @@
-import { LayoutEffect } from '../useLayoutEffect';
+import { ImperativeHandle } from '../useImperativeHandle';
 
 function App() {
-  return <LayoutEffect />;
+  return <ImperativeHandle />;
 }
 
 export default App;
