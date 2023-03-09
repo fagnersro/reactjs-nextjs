@@ -1,7 +1,7 @@
-import { ImperativeHandle } from '../useImperativeHandle';
+import { MediaQuery } from '../useMediaQuery-customHook';
 
 function App() {
-  return <ImperativeHandle />;
+  return <MediaQuery />;
 }
 
 export default App;
