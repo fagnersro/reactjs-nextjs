@@ -1,7 +1,7 @@
-import { MediaQuery } from '../useMediaQuery-customHook';
+import { ExecutionOrder } from '../hookExecutionOrder';
 
 function App() {
-  return <MediaQuery />;
+  return <ExecutionOrder />;
 }
 
 export default App;
