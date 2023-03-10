@@ -1,7 +1,7 @@
-import { ExecutionOrder } from '../hookExecutionOrder';
+import { Boundaries } from '../ErrorBoundaries';
 
 function App() {
-  return <ExecutionOrder />;
+  return <Boundaries />;
 }
 
 export default App;
