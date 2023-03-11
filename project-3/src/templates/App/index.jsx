@@ -1,7 +1,7 @@
-import { Boundaries } from '../ErrorBoundaries';
+import { ReactChildrenReactClone } from '../CompoundComponents';
 
 function App() {
-  return <Boundaries />;
+  return <ReactChildrenReactClone />;
 }
 
 export default App;
